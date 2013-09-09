@@ -1,0 +1,23 @@
+<%= semantic_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Login</h3>
+    </div>
+    <div class="panel-body-input">
+      <%= f.input :email, :label => false %>
+      <%= f.input :password, :label => false %>
+    </div>
+    <div class="main-panel-footer">
+      <p>
+        <%= f.action :submit, :as => :button, :label => "login" %>
+      </p>
+      <p class="tiny-devise-font">
+        <% if devise_mapping.rememberable? -%>
+        <%= f.check_box :remember_me, :input_html => { :class => "checkbox"} %> 
+        <% end %>
+         Remember me?
+      </p>
+      <p class="tiny-devise-font"><%= render "devise/shared/links" %></p>
+    </div>
+  </div>
+<% end %>

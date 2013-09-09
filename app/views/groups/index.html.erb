@@ -1,0 +1,35 @@
+<div class="main-panel-head"><h1>Gruppen</h1></div>
+<div class="main-panel-body">
+  <div class="row">
+  <div class="col-lg-8">
+    <% @groups.each do |group| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= link_to group.title, group %></h3>
+        </div>
+        <div class="panel-body">
+          <%= group.description %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-lg-4">
+    <h2 class="plain">
+      Suche
+    </h2>
+    <%= semantic_form_for @q, url: search_groups_path, html: { method: :post } do |f| %>
+      <p>
+        <%= f.input :title_cont, :label => false %>
+      </p>
+      <p>
+        <%= f.input :game_id_in, :as => :select, :collection => Game.all, :label => false, :include_blank => "Spiel"%>
+      </p>
+      <p>
+        <%= f.input :game_styles_id_in, :as => :select, :collection => GameStyle.all, :label => false, :include_blank => "Spielstil" %>
+      </p>
+      <p>
+        <%= f.action :submit, :as => :button, :label => "submit" %>
+      </p>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<h1>Listing game_styles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @game_styles.each do |game_style| %>
+      <tr>
+        <td><%= game_style.title %></td>
+        <td><%= link_to 'Show', game_style %></td>
+        <td><%= link_to 'Edit', edit_game_style_path(game_style) %></td>
+        <td><%= link_to 'Destroy', game_style, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Game style', new_game_style_path %>

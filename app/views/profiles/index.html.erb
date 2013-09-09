@@ -1,0 +1,33 @@
+<h1>Listing profiles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Plz</th>
+      <th>Age</th>
+      <th>Adress</th>
+      <th>Bio</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @profiles.each do |profile| %>
+      <tr>
+        <td><%= profile.user_id %></td>
+        <td><%= profile.first_name %></td>
+        <td><%= profile.last_name %></td>
+        <td><%= profile.plz %></td>
+        <td><%= profile.age %></td>
+        <td><%= profile.address %></td>
+        <td><%= profile.bio %></td>
+        <td><%= link_to 'Show', profile %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

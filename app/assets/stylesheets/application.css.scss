@@ -1,0 +1,322 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ # app/assets/stylesheets/application.css
+ *= require formtastic-bootstrap
+ *= require_directory .
+ *= require_self 
+ */
+
+@import "compass";
+
+// ------ Colors ------
+
+// Main Section Colors / Backgrounds
+$main-bg:  asset-url('bg.png', image);
+$tiles-bg: #fff;
+$no-border: none;
+$box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+
+$text-color-content: #93846f;
+$text-color-content-light: #a6947a;
+$text-color-headline: #fff;
+$text-color-headline-dark: #93846f;
+$text-shadow: none;
+
+// Main Link Colors
+$link-color: lighten(#54b5b4, 3);
+$link-color-hover: adjust-color($link-color, $lightness: 10, $saturation: 5);
+$link-color-visited: adjust-color($link-color, $hue: 15, $lightness: -4);
+$link-color-active: adjust-color($link-color-hover, $lightness: -15);
+
+// Navbar Colors
+$nav-bg: #fff;
+$nav-font-col: #3d322e;
+$nav-font-col-hover: adjust-color($nav-font-col, $lightness: 10, $saturation: 5);
+
+//Button Colors
+$button-color: #ff6766;
+$button-color-hover: adjust-color($button-color, $lightness: -20, $saturation: 10);
+$button-color-active: adjust-color($button-color-hover, $lightness: -20);
+
+
+// ------ Fonts ------
+
+$sans: "Muli", sans-serif, 400;
+$serif: "Bree Serif", serif, 400;
+$heading-font-family: $serif !default;
+$content-font-family: $sans !default;
+
+$small: 0.75em;
+
+.heading { font-family: $heading-font-family; }
+.sans { font-family: $sans; }
+.serif { font-family: $serif; }
+
+body {
+  background: $main-bg center top;
+  background-attachment: fixed;
+  padding-top: 100px;
+  font-family: $sans;
+  font-size: 1.7em;
+  line-height: 1.4em;
+  color: $text-color-content
+}
+
+.tiny-devise-font {
+  font-size: $small;
+  padding-top: 12px;
+  text-align: center;
+}
+
+.nav-serif { 
+  font-family: $serif;
+  font-size: 1.4em;
+  color: $nav-font-col;
+}
+.nav li {
+  color: $nav-font-col;
+}
+
+h1 {
+  font-size: 3em;
+  font-family: $heading-font-family;
+  font-weight: normal;
+  line-height: 1.2;
+  color: $text-color-headline;
+  text-shadow: $text-shadow;
+}
+
+h2 {
+  font-size: 2.2em;
+  font-family: $heading-font-family;
+  color: $text-color-headline;
+  text-shadow: $text-shadow;
+}
+
+.plain {
+  margin-top: 0px !important;
+}
+
+h3 {
+  font-size: 1.6em !important;
+  font-family: $heading-font-family;
+  color: $text-color-headline;
+  text-shadow: $text-shadow;
+}
+
+.h3-dark {
+  color: $text-color-headline-dark;
+}
+
+h4 {
+  font-size: 1.4em;
+  font-family: $heading-font-family;
+  color: $text-color-headline;
+  text-shadow: $text-shadow;
+}
+
+// ------ Main ------
+
+$logo: asset-url("viadice-logo.png");
+
+$glyph-arrow-right: asset-url("glyphicons_223_chevron-right.png");
+$glyph-star: asset-url("glyphicons_049_star.png");
+$glyph-cake: asset-url("glyphicons_278_birthday_cake.png");
+$glyph-house: asset-url("glyphicons_020_home.png");
+$glyph-dice: asset-url("glyphicons_322_playing_dices.png");
+$glyph-book: asset-url("glyphicons_351_book_open.png");
+
+.main-panel-head {
+  background-color: none;
+  padding: 25px 25px 0px 25px;
+}
+
+.main-panel-body {
+  padding: 25px;
+}
+
+.main-panel-footer {
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  background-color: #edede5;
+  padding: 15px;
+  margin: 0px -15px -15px -15px;
+}
+
+.panel-light{
+  padding: 15px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  background-color: none;
+  border: none;
+}
+
+.panel-heading-light {
+  padding: 10px 15px;
+  margin: -15px -15px 15px;
+  background-color: none;
+  border-bottom: 1px solid #fff;
+}
+
+.panel {
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  border: 0px;
+  border-radius: 12px;
+  -webkit-box-shadow: $box-shadow;
+          box-shadow: $box-shadow;
+}
+
+.panel-heading {
+  padding: 10px 15px;
+  margin: -15px -15px 15px;
+  background-color: #97ce68;
+  border-bottom: 1px solid #dddddd;
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px;
+}
+
+.panel-body-input .col-lg-9{
+  width: 100% !important;
+}
+
+.text .col-lg-9{
+  width: 100% !important;
+}
+
+.string .col-lg-9{
+  width: 100% !important;
+}
+
+.file .col-lg-9{
+  width: 100% !important;
+}
+
+.select .col-lg-9{
+  width: 100% !important;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 10px 30px 10px 15px;
+  margin-bottom: -1px;
+  background-color: none;
+  border: none;
+}
+
+.list-group-item-profile {
+  position: relative;
+  display: block;
+  padding: 13px 0px 7px 40px;
+  background-color: none;
+  border: none;
+  color: $text-color-headline !important;
+}
+
+.list-group-item-group {
+  position: relative;
+  display: block;
+  padding: 13px 0px 7px 40px;
+  background-color: none;
+  border: none;
+  color: $text-color-headline !important;
+}
+
+.list-group-item-profile:nth-child(1) { background: $glyph-star no-repeat 0; }
+.list-group-item-profile:nth-child(2) { background: $glyph-cake no-repeat 0; }
+.list-group-item-profile:nth-child(3) { background: $glyph-house no-repeat 0; }
+
+.list-group-item-group:nth-child(1) { background: $glyph-star no-repeat 0; }
+.list-group-item-group:nth-child(2) { background: $glyph-dice no-repeat 0; }
+.list-group-item-group:nth-child(3) { background: $glyph-book no-repeat 0; }
+
+.panel .list-group .list-group-item:first-child {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+a.list-group-item:hover,
+a.list-group-item:focus {
+  border-left: 4px solid #ff6766 !important;
+  text-decoration: none;
+  background-color: #edede5;
+  text-indent: -4px;
+}
+
+.logo{
+  background: $logo;
+}
+
+a {
+  @include link-colors($link-color, $hover: $link-color-hover, $focus: $link-color-hover, $visited: $link-color-visited, $active: $link-color-active);
+}
+
+// Navigation
+
+.navbar, .nav {
+  background-color: $nav-bg;
+}
+// .nav .brand {
+//     padding-top: 0;
+//     padding-bottom: 0;
+// }
+.nav > li > a {
+  line-height: 2em;
+  color: $nav-font-col-hover;
+  border-radius: 0px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+// Buttons
+.btn {
+  background-color: $button-color;
+  font-size: 1.1em;
+  font-weight: normal;
+  color: #fff !important;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 3px solid #ff4b4a;
+  border-radius: 2px;
+  width: 100%;
+}
+
+a.btn { 
+  color: #fff !important; 
+}
+
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active {
+  background-color: #d2322d;
+  border-color: #ac2925;
+}
+
+.btn-panel {
+  margin-bottom: 20px;
+}
+
+// checkboxen
+.checkbox .form-control[type="checkbox"] { 
+  width: auto; 
+  float: none; 
+  display: inline-block; 
+  margin-right: 0.8em
+}
+
+.check_boxes .col-lg-offset-3.col-lg-9 {
+  width: auto;
+  margin: 0; 
+}

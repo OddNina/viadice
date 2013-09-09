@@ -1,0 +1,18 @@
+<div class="main-panel-head"> <h1>News:</h1> </div>
+<div class="main-panel-body">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @news_item.headline %></h3>
+        </div>
+        <div class="panel-body">
+          <%= @news_item.content %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4"></div>
+  </div>
+</div>
+<%# = link_to 'Edit', edit_news_item_path(@news_item) %> |
+<%# = link_to 'Back', news_items_path %>

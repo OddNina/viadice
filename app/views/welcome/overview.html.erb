@@ -1,0 +1,55 @@
+<div class="main-panel-head">
+  <h1>Willkommen, <%= @profile.first_name %></h1>
+</div>
+<div class="main-panel-body">
+
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Neuigkeiten</h3>
+        </div>
+        <div class="panel-body">
+          Sachen die in meinen Gruppen passiert sind.
+        </div>
+        <div class="list-group">
+        <% @profile.news_items.each do |item| %>
+          <%= link_to item.headline, myprofile_group_news_item_path(item.group, item), class: "list-group-item" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Eigene Gruppen</h3>
+        </div>
+        <div class="panel-body">
+          Gruppen in denen ich Spielleiter bin.
+        </div>
+        <div class="list-group">
+        <% @profile.own_groups.each do |group| %>
+          <%= link_to group.title, group, class: "list-group-item" %>
+        <% end %>
+        </div>
+        <div class="main-panel-footer">
+          <%= link_to 'Neue Gruppe anlegen', new_myprofile_group_path, class: "btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Gruppen</h3>
+        </div>
+        <div class="panel-body">
+          Gruppen an denen ich teilnehme
+        </div>
+        <div class="list-group">
+        <% @profile.groups.each do |group| %>
+          <%= link_to group.title, group, class: "list-group-item" %>
+        <% end %>
+        </div>
+    </div>
+  </div>
+</div>

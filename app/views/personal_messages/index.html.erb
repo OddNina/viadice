@@ -1,0 +1,35 @@
+<h1>Listing personal_messages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Timestamp</th>
+      <th>Content</th>
+      <th>Originator</th>
+      <th>Receptor</th>
+      <th>Subject</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @personal_messages.each do |personal_message| %>
+      <tr>
+        <td><%= personal_message.timestamp %></td>
+        <td><%= personal_message.content %></td>
+        <td><%= personal_message.originator %></td>
+        <td><%= personal_message.receptor %></td>
+        <td><%= personal_message.subject %></td>
+        <td><%= link_to 'Show', personal_message %></td>
+        <td><%= link_to 'Edit', edit_personal_message_path(personal_message) %></td>
+        <td><%= link_to 'Destroy', personal_message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Personal message', new_personal_message_path %>

@@ -1,0 +1,79 @@
+<%= semantic_form_for @group, url: myprofile_group_path(@group) do |f| %>
+<% if @group.errors.any? %>>
+  <div class="col-lg-12">
+    <div class="alert alert-danger">
+    <% @group.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+    </div>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-lg-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Titel:
+        </h3>
+      </div>
+      <div class="panel-body">
+        <%= f.input :title, :label => false %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Avatar:
+        </h3>
+      </div>
+      <div class="panel-body">
+        <%= f.input :image, :label => false %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Spiel:
+        </h3>
+      </div>
+      <div class="panel-body">
+        <%= f.input :game, :label => false %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Beschreibung der Gruppe:
+        </h3>
+      </div>
+      <div class="panel-body">
+        <%= f.input :description, :label => false %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Beschreibung der Kampagne:
+        </h3>
+      </div>
+      <div class="panel-body">
+        <%= f.input :campagne, :label => false %>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Spiel-Stile:
+        </h3>
+      </div>
+      <div class="panel-body">
+        <%= f.input :game_styles, :label => false, :as => :check_boxes %>
+      </div>
+    </div>
+      <%= f.action :submit, :as => :button, :label => "submit" %>
+  </div>
+</div>
+
+<% end %>

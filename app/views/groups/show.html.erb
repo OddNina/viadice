@@ -1,0 +1,101 @@
+<div class="main-panel-head">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="row">
+        <div class="col-lg-4 img-responsive"><%= image_tag @group.image.url(:medium) %></div>
+        <div class="col-lg-8">
+          <h1><%= @group.title %></h1>
+          <div class="panel-light panel-default">
+            <div class="panel-heading-light">
+              <h3 class="panel-title">Informationen</h3>
+            </div>
+            <div class="panel-body">
+              <ul class="list-group">
+                <li class="list-group-item-group"><%= l @group.created_at, format: :long %></li>
+                <li class="list-group-item-group"><%= @group.game_styles.map(&:title).join(', ') %></li>
+                <li class="list-group-item-group"><%= @group.campagne %></li>
+                <li class="list-group-item-group"><%= @group.game.title %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
+<div class="col-lg-8">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        Über die Gruppe
+      </h3>
+    </div>
+    <div class="panel-body">
+      <%= @group.description %>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        Neuigkeiten
+      </h3>
+    </div>
+    <div class="panel-body">
+      <ul class="news">
+        <% if @group.member?(current_user.profile) %>
+          <% @group.news_items.each do |item| %>
+          <li>
+            <h3 class="h3-dark"><%= item.headline %></h3>
+              <% if @group.gamemaster.id == current_user.profile.id %>
+                <%= link_to 'Edit', edit_myprofile_group_news_item_path(@group, item) %>
+                <%= link_to 'Delete', myprofile_group_news_item_path(@group, item), method: :delete %>
+              <% end %>
+            <p><%= item.content %></p>
+          </li>
+          <% end %>
+          <% unless @group.news_items.any? %>
+          <li>Es gibt nichts neues.</li>
+          <% end %>
+        <% else %>
+          <li>Du musst Mitglied der Gruppe sein um die Neuigkeiten zu lesen.</li>
+        <% end %>  
+      </ul>
+      <% if @group.gamemaster.id == current_user.profile.id %>
+      <div class="main-panel-footer">
+          <%= link_to 'New News item', new_myprofile_group_news_item_path(@group), class: "btn btn-default", method: :get %>
+      </div>
+      <% end %>
+    </div> 
+  </div>
+</div>
+<div class="col-lg-4">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        Der Meister:
+      </h3>
+    </div>
+    <div class="panel-body">
+      <p><%= link_to @group.gamemaster.full_name, profile_path(@group.gamemaster) %></p>
+      <p><%= image_tag @group.gamemaster.photo.url(:thumb) %></p>
+    </div>
+  </div>
+  <% @group.profiles.each do |profile| %>
+    <!-- <div class="col-lg-7"> -->
+      <div class="panel panel-default">
+        <p><%= link_to profile.full_name, profile_path(profile) %></p>
+        <%= image_tag profile.photo.url(:thumb) %>
+      </div>
+    <!-- </div> -->
+  <% end %>
+  <div class="actions">
+  <% if @group.gamemaster.id == current_user.profile.id %>
+    <%= link_to 'Edit Group', edit_myprofile_group_path(@group), class: "btn btn-default btn-panel" %>
+    <%= button_to 'Delete Group', myprofile_group_path(@group), class: "btn btn-default btn-panel", method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% elsif @group.member?(current_user.profile) %> 
+    <%= link_to 'Leave Group', membership_group_path(@group), class: "btn btn-default btn-panel", method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% else %>
+    <%= link_to 'Join Group', membership_group_path(@group), class: "btn btn-default btn-panel", method: :put %>
+  <% end %>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="main-panel-head">
+  <h1>Willkommen bei viaDice</h1>
+</div>
+<div class="main-panel-body">
+  <div class="col-lg-4">
+    <h2 class="plain">
+      Suche
+    </h2>
+    <%= semantic_form_for @q, url: search_groups_path, html: { method: :post } do |f| %>
+      <p>
+        <%= f.input :title_cont, :label => false %>
+      </p>
+      <p>
+        <%= f.input :game_id_in, :as => :select, :collection => Game.all, :label => false, :include_blank => "Spiel"%>
+      </p>
+      <p>
+        <%= f.input :game_styles_id_in, :as => :select, :collection => GameStyle.all, :label => false, :include_blank => "Spielstil" %>
+      </p>
+      <p>
+        <%= f.action :submit, :as => :button, :label => "submit" %>
+      </p>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Timestamp:</strong>
+  <%= @personal_message.timestamp %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @personal_message.content %>
+</p>
+
+<p>
+  <strong>Originator:</strong>
+  <%= @personal_message.originator %>
+</p>
+
+<p>
+  <strong>Receptor:</strong>
+  <%= @personal_message.receptor %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @personal_message.subject %>
+</p>
+
+<%= link_to 'Edit', edit_personal_message_path(@personal_message) %> |
+<%= link_to 'Back', personal_messages_path %>

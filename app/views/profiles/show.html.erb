@@ -1,0 +1,54 @@
+<div class="main-panel-head">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="row">
+        <div class="col-lg-4 img-rounded img-responsive"><%= image_tag @profile.photo.url(:medium)%></div>
+        <div class="col-lg-8">
+          <h1><%= @profile.full_name %></h1>
+          <div class="panel-light panel-default">
+            <div class="panel-heading-light">
+              <h3 class="panel-title">Informationen</h3>
+            </div>
+            <div class="panel-body">
+              <ul class="list-group">
+                <li class="list-group-item-profile"><%= @profile.user.nickname %></li>
+                <li class="list-group-item-profile"><%= @profile.age %></li>
+                <li class="list-group-item-profile"><%= @profile.city %></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
+<div class="main-panel-body">
+  <div class="row">
+  <div class="col-lg-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Bio</h3>
+      </div>
+      <div class="panel-body">
+        <%= @profile.bio %>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Spiele</h3>
+      </div>
+      <div class="panel-body">
+        <ul class="list-group">
+          <% @profile.games.each do |game| %>
+            <li class="list-group-item"><%= game.title %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+      <% if @profile == current_user.profile %>
+        <%= link_to 'Edit', edit_myprofile_path, class: 'btn btn-default' %>
+      <% end %>
+  </div>
+</div>
